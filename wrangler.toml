@@ -1,0 +1,54 @@
+name = "lonely"
+main = "api/main.ts"
+compatibility_date = "2024-02-10"
+workers_dev = false
+minify = true
+send_metrics = true
+
+[dev]
+ip = "localhost"
+port = 8787
+
+[env.dev]
+minify = false
+vars = { VERSION = "dev", R2_BUCKET_NAME = "lonely-preview", CLOUDFLARE_ACCOUNT_ID = "957f6b4f58f1226328bf24d3bb27bb01" }
+
+kv_namespaces = [
+    { binding = "KV", id = "3fd6e27839a1477194618f0c1bbe44bb", preview_id = "3fd6e27839a1477194618f0c1bbe44bb" }
+]
+r2_buckets = [
+    { binding = "R2", bucket_name = "lonely-preview", preview_bucket_name = "lonely-preview" }
+]
+d1_databases = [
+    { binding = "DB", database_name = "lonely-preview", database_id = "f32a397a-56cb-42fc-8bd4-9abaf3e771a9", preview_database_id = "f32a397a-56cb-42fc-8bd4-9abaf3e771a9", migrations_table = "migrations", migrations_dir = "migrations" }
+]
+
+[env.test]
+route = "test.lonely.homes/api/*"
+
+vars = { VERSION = "git_hash_test", R2_BUCKET_NAME = "lonely-preview", CLOUDFLARE_ACCOUNT_ID = "957f6b4f58f1226328bf24d3bb27bb01" }
+
+kv_namespaces = [
+    { binding = "KV", id = "3fd6e27839a1477194618f0c1bbe44bb" }
+]
+r2_buckets = [
+    { binding = "R2", bucket_name = "lonely-preview" }
+]
+d1_databases = [
+    { binding = "DB", database_name = "lonely-preview", database_id = "f32a397a-56cb-42fc-8bd4-9abaf3e771a9", migrations_table = "migrations", migrations_dir = "migrations" }
+]
+
+[env.prod]
+route = "lonely.homes/api/*"
+
+vars = { VERSION = "git_hash_prod", R2_BUCKET_NAME = "lonely", CLOUDFLARE_ACCOUNT_ID = "957f6b4f58f1226328bf24d3bb27bb01" }
+
+kv_namespaces = [
+    { binding = "KV", id = "248c7cfce7044cfea4bb031b5863ed4b" }
+]
+r2_buckets = [
+    { binding = "R2", bucket_name = "lonely" }
+]
+d1_databases = [
+    { binding = "DB", database_name = "lonely", database_id = "8929f570-affc-4b4f-a3e3-fcd8eddf5711", migrations_table = "migrations", migrations_dir = "migrations" }
+]

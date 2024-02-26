@@ -1,0 +1,25 @@
+dist
+protos/index.*
+*.local
+.wrangler
+.dev.vars
+/*.d.ts
+/dev-dist
+
+# idea
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+*.log*
+node_modules

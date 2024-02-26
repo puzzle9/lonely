@@ -1,0 +1,31 @@
+syntax = "proto3";
+package lonely;
+
+message USER_INFO_OTHER_FIELDS {
+  string label = 1;
+  string value = 2;
+}
+
+// 用户信息
+message UserInfo {
+  // 用户名 不可更改
+  string username = 1;
+  // 头像
+  bytes avatar = 2;
+  // 昵称
+  string nickname = 3;
+  // 简介
+  string introduction = 4;
+  // 性别
+  string gender = 5;
+  // 生日
+  string birthday = 6;
+  // 星座
+  string constellation = 7;
+  // 城市
+  string city = 8;
+  string created_at = 10;
+  string updated_at = 11;
+  // 自定义字段
+  repeated USER_INFO_OTHER_FIELDS other_fields = 15;
+}

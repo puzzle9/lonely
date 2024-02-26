@@ -1,0 +1,72 @@
+syntax = "proto3";
+package lonely;
+
+// 帖子信息
+message ForumInfo {
+  // 帖子id
+  string ulid = 1;
+  
+  // 发布者
+  string user_uuid = 2;
+
+  // 帖子 颜色 类似于 节点
+  string color = 5;
+
+  // 帖子可见度
+  enum ForumInfoVisibility {
+    // 公开
+    public = 0;
+    // 隐藏
+    privacy = 1;
+  }
+  ForumInfoVisibility visibility = 6;
+
+  // 作者信息
+  message Author {
+    // 用户名
+    string username = 1;
+    // 昵称
+    string nickname = 2;
+    // 头像
+    bytes avatar = 3;
+  }
+  Author author = 9;
+
+  // 帖子信息
+  message Data {
+    // 标题
+    string title = 1;
+    // 内容
+    string body = 2;
+    // 缩略图 
+    repeated bytes thumbnail = 3;
+    // 帖子文件
+    message Files {
+      enum Type {
+        image = 0;
+        video = 1;
+        music = 2;
+        link = 5;
+      }
+      Type type = 1;
+      string name = 2;
+      string path = 3;
+    }
+    repeated Files files = 4;
+    // 允许评论
+    bool allow_comment = 5;
+    // 地址信息
+    message Address {
+      // 展示名称
+      string name = 1;
+      // 经度
+      string longitude = 2;
+      // 纬度
+      string latitude = 3;
+    }
+    Address address = 12;
+  }
+  Data data = 10;
+
+  string created_at = 14;
+}
