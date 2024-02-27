@@ -92,9 +92,12 @@
       }
     },
     postSubmitSuccess = () => {
-      // todo: 有一种可能 发的比较多 第一次未加载到自己
-      getList('before')
-      // list_load_initial.value = true
+      if (lists.value.length) {
+        // todo: 有一种可能 发的比较多 第一次未加载到自己
+        getList('before')
+      } else {
+        list_load_initial.value = true
+      }
     }
 </script>
 <style scoped lang="stylus"></style>
