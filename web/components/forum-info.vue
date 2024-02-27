@@ -12,7 +12,6 @@
         </n-avatar>
       </template>
       <template #header>
-        {{ info.ulid }}
         <span v-if="info.author?.nickname">{{ info.author.nickname }}</span>
         <span v-if="info.author?.username"> @{{ info.author.username }}</span>
       </template>
