@@ -1,0 +1,53 @@
+name: cloudflare
+
+on:
+  push:
+    branches:
+      - main
+      - test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: cloudflare
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          branch: ${{ github.ref_name }}
+
+      - name: enable corepack
+        run: corepack enable
+
+      - name: set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+
+      - name: yarn install
+        run: yarn install
+
+      - name: build proto
+        run: yarn run proto
+
+      - name: build web
+        run: yarn run web:build
+
+      - name: deploy web
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: lonelys
+          directory: dist
+          branch: ${{ github.ref_name }}
+          workingDirectory: /
+          wranglerVersion: '3'
+
+      - name: deploy api
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --env ${{github.ref_name == 'main' && 'prod' || 'test'}} --var VERSION:${{ github.sha }}

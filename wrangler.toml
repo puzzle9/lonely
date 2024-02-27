@@ -24,7 +24,7 @@ d1_databases = [
 ]
 
 [env.test]
-route = "test.lonely.homes/api/*"
+route = { pattern = "test.lonely.homes", custom_domain = true }
 
 vars = { VERSION = "git_hash_test", R2_BUCKET_NAME = "lonely-preview", CLOUDFLARE_ACCOUNT_ID = "957f6b4f58f1226328bf24d3bb27bb01" }
 
