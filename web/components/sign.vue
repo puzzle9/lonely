@@ -65,7 +65,6 @@
           required: true,
           asyncValidator(rule: FormItemRule, value: string) {
             return new Promise(async (resolve, reject) => {
-              return resolve()
               if (!value) {
                 return resolve()
               }
