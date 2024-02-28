@@ -31,9 +31,13 @@ router.beforeEach(async (to, from, next) => {
 
 export default router
 
+// prettier-ignore
+export const KEEP_ALIVE_NAME = [
+  'ForumList'
+]
+
 declare module 'vue-router' {
   interface RouteMeta {
     title: string
-    keepAlive: boolean
   }
 }

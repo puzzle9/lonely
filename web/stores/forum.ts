@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 import * as pb from '@protos/index'
 import { decode } from 'uint8-to-base64'
 import { instance } from '@/utils/axios.ts'
@@ -7,6 +8,8 @@ import db from '@/utils/db.ts'
 export default defineStore(
   'forum',
   () => {
+    const last_post_body = ref()
+
     const forumPost = async (data: pb.lonely.IForumInfo) =>
       instance.post('/forum/post', pb.lonely.ForumInfo.encode(data).finish().slice().buffer, {
         headers: {
@@ -31,6 +34,8 @@ export default defineStore(
             ...info.author,
           })
 
+          db.updateForum(info)
+
           return info
         })
 
@@ -49,14 +54,40 @@ export default defineStore(
         ulid,
       })
 
+    const forumInfo = (ulid: string): Promise<pb.lonely.IForumInfo> =>
+      new Promise(async (resolve, reject) => {
+        let data = await db.getForumInfo(ulid)
+        if (data) {
+          return resolve(data)
+        }
+
+        instance
+          .get('/forum/info', {
+            params: {
+              ulid,
+            },
+          })
+          .then((row) => {
+            let info = pb.lonely.ForumInfo.decode(decode(row))
+            db.updateForum(info)
+
+            resolve(info)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+
     return {
+      last_post_body,
       forumPost,
       forumLists,
       forumDelete,
       forumBlock,
+      forumInfo,
     }
   },
   {
-    // persist: true,
+    persist: true,
   },
 )

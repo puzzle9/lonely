@@ -11,9 +11,16 @@ export default <RouteRecordRaw[]>[
         name: 'ForumList',
         meta: {
           title: '帖子列表',
-          keepAlive: true,
         },
         component: () => import('@/views/forum/list.vue'),
+      },
+      {
+        path: 'info/:ulid',
+        name: 'ForumInfo',
+        meta: {
+          title: '帖子详情',
+        },
+        component: () => import('@/views/forum/info.vue'),
       },
     ],
   },

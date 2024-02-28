@@ -28,7 +28,19 @@
             </template>
             {{ getUnixFormatDate(info.created_at as string, 'YY-MM-DD HH:mm') }}
           </n-tooltip>
-          <n-popconfirm v-if="COLOR_DARK_ROOM != info.color" @positive-click="blockSubmit" :show-icon="false" trigger="hover">
+          <n-tooltip trigger="hover">
+            <template #trigger>
+              <n-button text @click="infoShare">
+                <template #icon>
+                  <n-icon>
+                    <ShareSocialOutline />
+                  </n-icon>
+                </template>
+              </n-button>
+            </template>
+            获取分享地址
+          </n-tooltip>
+          <n-popconfirm v-if="!props.hide_block && COLOR_DARK_ROOM != info.color" @positive-click="blockSubmit" :show-icon="false" trigger="hover">
             <template #trigger>
               <n-button text>
                 <template #icon>
@@ -46,7 +58,13 @@
         <n-flex justify="end"></n-flex>
       </template>
       <template #default v-if="info.data?.body">
-        <n-scrollbar trigger="none" style="max-height: 30vh">
+        <n-scrollbar
+          trigger="none"
+          :style="{
+            'max-height': props.no_max_height,
+            'word-break': 'break-all',
+          }"
+          @click="emits('click_body', forum_ulid)">
           {{ info.data.body }}
         </n-scrollbar>
       </template>
@@ -70,7 +88,8 @@
 </template>
 <script setup lang="ts">
   import { ComputedRef, computed } from 'vue'
-  import { useArrayFilter } from '@vueuse/core'
+  import { useRouter } from 'vue-router'
+  import { useArrayFilter, useClipboard } from '@vueuse/core'
   import uniqolor from 'uniqolor'
   import * as pb from '@protos/index'
   import signStore from '@/stores/sign.ts'
@@ -78,15 +97,24 @@
   import forumStore from '@/stores/forum.ts'
   import { COLOR_DARK_ROOM } from '@common/colors.ts'
   import { getUnixFormNow, getUnixFormatDate, unixCompareNow } from '@/utils/dayjs.ts'
-
-  import { LinkOutline } from '@vicons/ionicons5'
+  import { LinkOutline, ShareSocialOutline } from '@vicons/ionicons5'
   import { ReportOutlined } from '@vicons/material'
 
-  const emits = defineEmits(['delete_success', 'black_success'])
+  const router = useRouter()
 
-  const props = defineProps<{
-    info: pb.lonely.IForumInfo
-  }>()
+  const emits = defineEmits(['delete_success', 'black_success', 'click_body'])
+
+  const props = withDefaults(
+    defineProps<{
+      info: pb.lonely.IForumInfo
+      hide_block?: boolean
+      no_max_height?: string | boolean
+    }>(),
+    {
+      hide_block: false,
+      no_max_height: '30vh',
+    },
+  )
 
   const forum_ulid: ComputedRef<string> = computed(() => <string>props.info.ulid)
 
@@ -117,6 +145,20 @@
       storeNaive.message.success('屏蔽成功 已将此帖关进小黑屋')
       emits('black_success', ulid)
     })
+  }
+
+  const infoShare = () => {
+    storeNaive.message.success('地址复制成功')
+    useClipboard().copy(
+      `${window.location.origin}${
+        router.resolve({
+          name: 'ForumInfo',
+          params: {
+            ulid: forum_ulid.value,
+          },
+        }).href
+      }`,
+    )
   }
 </script>
 <style scoped lang="stylus">

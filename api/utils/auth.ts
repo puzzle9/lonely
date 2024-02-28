@@ -17,7 +17,7 @@ export default function (): MiddlewareHandler {
     if (c.req.path == '/api/') {
       return next()
     }
-    
+
     const authorization = c.req.raw.headers.get('Authorization')
     if (!authorization) {
       return c.text('no authorization', 401)

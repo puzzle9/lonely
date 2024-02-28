@@ -67,7 +67,7 @@
   import { HomeOutline, LogIn, LogOutOutline } from '@vicons/ionicons5'
 
   const layout_menu_default = 'ForumList',
-    layout_menu = ref(route.name as string || layout_menu_default),
+    layout_menu = ref((route.name as string) || layout_menu_default),
     layout_menus: MenuOption[] = [
       {
         label: '主页',

@@ -10,14 +10,14 @@
     <n-card :bordered="false" size="small">
       <template #header>
         <div class="navbar">
-          <n-button v-if="storeNaive.is_mobile && !is_back" quaternary circle @click="drawer_show = true">
+          <n-button v-if="storeNaive.is_mobile && !show_back" quaternary circle @click="drawer_show = true">
             <template #icon>
               <n-icon>
                 <dehaze-round />
               </n-icon>
             </template>
           </n-button>
-          <n-button class="back-btn" v-if="is_back" quaternary circle @click="goBack">
+          <n-button class="back-btn" v-if="show_back" quaternary circle @click="goBack">
             <template #icon>
               <n-icon>
                 <chevron-left-round />
@@ -54,7 +54,7 @@
     router = useRouter()
 
   const props = defineProps({
-    is_back: {
+    show_back: {
       type: Boolean,
       default: false,
     },
@@ -72,6 +72,10 @@
       router.go(-1)
     }
   }
+
+  defineExpose({
+    goBack,
+  })
 </script>
 <style scoped lang="stylus">
   :deep(.n-scrollbar-container .drawer)

@@ -6,6 +6,7 @@ import * as pb from '@protos/index'
 import { getTimestamp } from '@api/utils/time.ts'
 import { encode } from 'uint8-to-base64'
 import { COLOR_DARK_ROOM } from '@common/colors.ts'
+import { FORUM_PAGE_SIZE } from '@common/forum.ts'
 
 const forum = new Hono<{ Bindings: HonoBindings }>()
 
@@ -49,7 +50,7 @@ WHERE
 	AND ( deleted_at IS NULL AND color = ? AND visibility = ? ) 
 ORDER BY
 	ulid ${sort} 
-LIMIT 5
+LIMIT ${FORUM_PAGE_SIZE}
 `)
       .bind(value || '9999', query.color, 'public')
       .all()
@@ -150,16 +151,61 @@ forum.put(
     await c.env.DB.prepare(`
 UPDATE forums SET
   color = ?
+  AND updated_at = ?
 WHERE
   ulid = ?
   AND color != ? 
     `).bind(
       COLOR_DARK_ROOM,
+      getTimestamp(),
       json.ulid,
       COLOR_DARK_ROOM
     ).run()
 
     return c.text('已关进小黑屋')
+  },
+)
+
+forum.get(
+  '/info',
+  zValidator(
+    'query',
+    z.object({
+      ulid: z.string(),
+    }),
+  ),
+  async (c) => {
+    let query = c.req.query()
+    // prettier-ignore
+    let data: any = await c.env.DB.prepare(`
+SELECT
+	ulid,
+	user_uuid,
+	visibility,
+	color,
+	author,
+	data,
+	created_at 
+FROM
+	forums
+WHERE
+	ulid = ?
+	AND ( deleted_at IS NULL AND visibility = ? ) 
+`)
+      .bind(query.ulid, 'public')
+      .first()
+
+    return c.json(
+      encode(
+        pb.lonely.ForumInfo.encode(
+          pb.lonely.ForumInfo.fromObject({
+            ...data,
+            author: JSON.parse(data.author),
+            data: JSON.parse(data.data),
+          }),
+        ).finish(),
+      ),
+    )
   },
 )
 
