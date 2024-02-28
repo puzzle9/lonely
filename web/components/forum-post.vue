@@ -113,7 +113,7 @@
   import naiveStore from '@/stores/naive.ts'
   import forumStore from '@/stores/forum.ts'
   import fileStore, { fileImage, blobToUint8Array } from '@/stores/file.ts'
-  import * as color from '@/assets/color.ts'
+  import * as color from '@/utils/color.ts'
 
   const emits = defineEmits(['color', 'submit_success'])
 
@@ -152,7 +152,7 @@
 
   const post_color = useStorage('post_color', color.COLOR_DEFAULT),
     // @ts-ignore
-    post_placeholder = computed(() => color.ideas?.[post_color.value]?.[storeNaive.theme_name] || color.tips[Math.floor(Math.random() * color.tips.length)]),
+    post_placeholder = computed(() => color.getTipByColor(post_color.value)),
     post_visibilitys = {
       公开: pb.lonely.ForumInfo.ForumInfoVisibility.public,
       私密: pb.lonely.ForumInfo.ForumInfoVisibility.privacy,
