@@ -165,7 +165,9 @@
     },
     post_form = ref(),
     post_submit_loading = ref(false),
-    post_submit_disable = computed(() => !!post_form.value.files.filter((row: UploadFileInfo) => row.status != 'finished').length || (!post_form.value.files.length && !post_form.value.body)),
+    post_submit_disable = computed(
+      () => !!post_form.value.files.filter((row: UploadFileInfo) => row.status != 'finished').length || (!post_form.value.files.length && !post_form.value.body),
+    ),
     postCrab = () => {
       post_form.value = Object.assign({}, post_form_default, {
         body: post_color.value,
@@ -197,12 +199,21 @@
         })
       })
 
+      let post_body = post.body,
+        last_post_body = storeForum.last_post_body
+
+      if (last_post_body && post_body == last_post_body && !files.length) {
+        storeNaive.message.error('说点与上次发言不同的呀')
+        post_submit_loading.value = false
+        return
+      }
+
       storeForum
         .forumPost({
           color: post_color.value,
           visibility: post.visibility,
           data: {
-            body: post.body,
+            body: post_body,
             thumbnail,
             files,
             allow_comment: false,
@@ -210,6 +221,7 @@
         })
         .then(() => {
           storeNaive.message.success('发布成功')
+          storeForum.last_post_body = post_body
           emits('submit_success')
           postFormInit()
         })
