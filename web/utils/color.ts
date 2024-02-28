@@ -57,11 +57,16 @@ export const tips: string[] = [
 ]
 
 export const getTipByColor = (color: string): string => {
+  let tip: string | undefined
   if (color != COLOR_DEFAULT && color in ideas) {
     // @ts-ignore
-    return ideas[color][naiveStore().theme_name]
+    tip = ideas[color][naiveStore().theme_name]
   }
 
-  let data = [...tips, ...Object.values(ideas[COLOR_DEFAULT])]
-  return data[Math.floor(Math.random() * data.length)]
+  if (!tip) {
+    let data = [...tips, ...Object.values(ideas[COLOR_DEFAULT])]
+    tip = <string>data[Math.floor(Math.random() * data.length)]
+  }
+
+  return tip
 }
