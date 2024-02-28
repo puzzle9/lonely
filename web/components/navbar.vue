@@ -72,6 +72,10 @@
       router.go(-1)
     }
   }
+
+  defineExpose({
+    goBack,
+  })
 </script>
 <style scoped lang="stylus">
   :deep(.n-scrollbar-container .drawer)

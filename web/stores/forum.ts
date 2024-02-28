@@ -34,6 +34,8 @@ export default defineStore(
             ...info.author,
           })
 
+          db.updateForum(info)
+
           return info
         })
 
@@ -52,12 +54,37 @@ export default defineStore(
         ulid,
       })
 
+    const forumInfo = (ulid: string): Promise<pb.lonely.IForumInfo> =>
+      new Promise(async (resolve, reject) => {
+        let data = await db.getForumInfo(ulid)
+        if (data) {
+          return resolve(data)
+        }
+
+        instance
+          .get('/forum/info', {
+            params: {
+              ulid,
+            },
+          })
+          .then((row) => {
+            let info = pb.lonely.ForumInfo.decode(decode(row))
+            db.updateForum(info)
+
+            resolve(info)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+
     return {
       last_post_body,
       forumPost,
       forumLists,
       forumDelete,
       forumBlock,
+      forumInfo,
     }
   },
   {

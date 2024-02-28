@@ -5,7 +5,8 @@
       <forum-post ref="forum_post" @color="postChangeColor" @submit_success="postSubmitSuccess" />
     </n-list-item>
     <n-list-item v-for="list in lists" :key="list.ulid">
-      <forum-info @delete_success="postListRemove" @black_success="postListRemove" :info="list"></forum-info>
+      <!-- fixme: 此处点击事件 因为子组件的 tooltip hover 模式在手机端 有点击穿透情况 -->
+      <forum-info @delete_success="postListRemove" @black_success="postListRemove" :info="list" @click_body="toPostInfo"></forum-info>
     </n-list-item>
     <VueEternalLoading :load="listLoad" v-model:is-initial="list_load_initial" style="margin-top: 10px">
       <template #loading>
@@ -37,14 +38,15 @@
   })
 
   import { Ref, ref } from 'vue'
+  import { useRouter } from 'vue-router'
   import * as pb from '@protos/index'
   import forumStore from '@/stores/forum.ts'
-  import ForumPost from '@/components/forum-post.vue'
   import { FORUM_PAGE_SIZE } from '@common/forum.ts'
   // @ts-ignore
   import { VueEternalLoading, LoadAction } from '@ts-pro/vue-eternal-loading'
 
-  const storeForum = forumStore()
+  const storeForum = forumStore(),
+    router = useRouter()
 
   const forum_post = ref()
 
@@ -109,5 +111,16 @@
         list_load_initial.value = true
       }
     }
+
+  const toPostInfo = (ulid: string) => {
+    // todo: 等评论功能出来后再放开 可进详情页
+    return
+    router.push({
+      name: 'ForumInfo',
+      params: {
+        ulid,
+      },
+    })
+  }
 </script>
 <style scoped lang="stylus"></style>

@@ -166,4 +166,47 @@ WHERE
   },
 )
 
+forum.get(
+  '/info',
+  zValidator(
+    'query',
+    z.object({
+      ulid: z.string(),
+    }),
+  ),
+  async (c) => {
+    let query = c.req.query()
+    // prettier-ignore
+    let data: any = await c.env.DB.prepare(`
+SELECT
+	ulid,
+	user_uuid,
+	visibility,
+	color,
+	author,
+	data,
+	created_at 
+FROM
+	forums
+WHERE
+	ulid = ?
+	AND ( deleted_at IS NULL AND visibility = ? ) 
+`)
+      .bind(query.ulid, 'public')
+      .first()
+
+    return c.json(
+      encode(
+        pb.lonely.ForumInfo.encode(
+          pb.lonely.ForumInfo.fromObject({
+            ...data,
+            author: JSON.parse(data.author),
+            data: JSON.parse(data.data),
+          }),
+        ).finish(),
+      ),
+    )
+  },
+)
+
 export default forum
