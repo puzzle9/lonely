@@ -6,6 +6,7 @@ import * as pb from '@protos/index'
 import { getTimestamp } from '@api/utils/time.ts'
 import { encode } from 'uint8-to-base64'
 import { COLOR_DARK_ROOM } from '@common/colors.ts'
+import { FORUM_PAGE_SIZE } from '@common/forum.ts'
 
 const forum = new Hono<{ Bindings: HonoBindings }>()
 
@@ -49,7 +50,7 @@ WHERE
 	AND ( deleted_at IS NULL AND color = ? AND visibility = ? ) 
 ORDER BY
 	ulid ${sort} 
-LIMIT 5
+LIMIT ${FORUM_PAGE_SIZE}
 `)
       .bind(value || '9999', query.color, 'public')
       .all()

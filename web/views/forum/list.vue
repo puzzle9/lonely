@@ -36,6 +36,7 @@
   import * as pb from '@protos/index'
   import forumStore from '@/stores/forum.ts'
   import ForumPost from '@/components/forum-post.vue'
+  import { FORUM_PAGE_SIZE } from '@common/forum.ts'
   // @ts-ignore
   import { VueEternalLoading, LoadAction } from '@ts-pro/vue-eternal-loading'
 
@@ -65,8 +66,13 @@
       getList('after')
         // @ts-ignore
         .then((res: []) => {
-          if (res.length) {
-            load.loaded()
+          let res_length = res.length
+          if (res_length) {
+            if (res_length != FORUM_PAGE_SIZE) {
+              load.noMore()
+            } else {
+              load.loaded()
+            }
           } else {
             if (lists.value.length) {
               load.noMore()
