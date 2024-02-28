@@ -1,6 +1,5 @@
 <template>
-  <n-layout class="Index" content-class="layout" :has-sider="!is_mobile" position="absolute">
-    <n-back-top v-if="is_mobile" />
+  <n-layout class="Index" content-class="layout" :has-sider="!is_mobile" :position="is_mobile ? 'static' : 'absolute'">
     <n-layout-sider
       v-if="!is_mobile"
       width="200px"
@@ -30,6 +29,7 @@
       <n-layout-sider bordered></n-layout-sider>
     </n-layout>
   </n-layout>
+  <n-back-top v-if="is_mobile" />
 </template>
 <script setup lang="ts">
   import { computed } from 'vue'

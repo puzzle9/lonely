@@ -1,8 +1,11 @@
+import { createPersistedState } from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { createPersistedState } from 'pinia-plugin-persistedstate'
+import { registerSW } from 'virtual:pwa-register'
 import router from '@/router'
 import App from '@/App.vue'
+
+registerSW({ immediate: true })
 
 const app = createApp(App)
 
