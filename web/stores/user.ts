@@ -4,7 +4,7 @@ import * as pb from '@protos/index'
 import { instance, storage, uploadToStorage } from '@/utils/axios.ts'
 import { getUnix } from '@/utils/dayjs.ts'
 import db, * as dbType from '@/utils/db.ts'
-import * as pathsUser from '@paths/user.ts'
+import * as commonPath from '@common/path.ts'
 
 type USER_UPLOAD_TOKEN_TYPE = 'info' | 'forum'
 
@@ -21,7 +21,7 @@ export default defineStore(
           return resolve(public_key)
         }
 
-        let res = await storage.get(pathsUser.getUserPublicPath(uuid)),
+        let res = await storage.get(commonPath.getUserPublicPath(uuid)),
           status = res.status
         if (status == 404) {
           let error = `uuid ${uuid} public key error: ${status}`
@@ -48,7 +48,7 @@ export default defineStore(
         }
 
         storage
-          .get(`${pathsUser.getUserInfoPath(uuid)}${refresh ? `?time=${getUnix()}` : ''}`)
+          .get(`${commonPath.getUserInfoPath(uuid)}${refresh ? `?time=${getUnix()}` : ''}`)
           .then((res) => {
             if (res.status == 404) {
               return reject(null)

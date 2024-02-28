@@ -4,7 +4,7 @@ import userStore from '@/stores/user.ts'
 import { instance, storage, uploadToStorage } from '@/utils/axios.ts'
 import { getFormatDate, getUnix } from '@/utils/dayjs.ts'
 import * as crypto from '@/utils/crypto.ts'
-import * as pathsUser from '@paths/user.ts'
+import * as commonPath from '@common/path.ts'
 import { getUsernameUUID } from '@/utils/uuid.ts'
 
 type Type = Ref<'in' | 'reg'>
@@ -90,7 +90,7 @@ export default defineStore(
           }
 
           let key = crypto.getUserPrivateDecodeKey(public_key, password),
-            private_key_encode = (await storage.get(pathsUser.getUserPrivatePath(uuid))).data,
+            private_key_encode = (await storage.get(commonPath.getUserPrivatePath(uuid))).data,
             private_key = await crypto.decodeData(private_key_encode, key).catch(() => null)
 
           if (!private_key) {
