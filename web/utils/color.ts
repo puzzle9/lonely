@@ -1,3 +1,4 @@
+import { COLOR_DARK_ROOM } from '@common/colors.ts'
 import naiveStore from '@/stores/naive.ts'
 
 /**
@@ -32,7 +33,7 @@ export const ideas: Record<string, ideas> = {
   },
 
   // Black
-  '#000000': {
+  [COLOR_DARK_ROOM]: {
     light: '天亮了 你问 我答',
     dark: '夜深了 你说 我听',
   },
@@ -57,11 +58,16 @@ export const tips: string[] = [
 ]
 
 export const getTipByColor = (color: string): string => {
+  let tip: string | undefined
   if (color != COLOR_DEFAULT && color in ideas) {
     // @ts-ignore
-    return ideas[color][naiveStore().theme_name]
+    tip = ideas[color][naiveStore().theme_name]
   }
 
-  let data = [...tips, ...Object.values(ideas[COLOR_DEFAULT])]
-  return data[Math.floor(Math.random() * data.length)]
+  if (!tip) {
+    let data = [...tips, ...Object.values(ideas[COLOR_DEFAULT])]
+    tip = <string>data[Math.floor(Math.random() * data.length)]
+  }
+
+  return tip
 }

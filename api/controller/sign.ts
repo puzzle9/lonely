@@ -5,7 +5,7 @@ import { sign as jwtSign } from 'hono/jwt'
 import { ed25519 } from '@noble/curves/ed25519'
 import { utf8ToBytes } from '@noble/ciphers/utils'
 import { decode } from 'uint8-to-base64'
-import * as pathUser from '@paths/user.ts'
+import * as commonPath from '@common/path.ts'
 import { getTimestamp } from '@api/utils/time.ts'
 import { generateR2SignUrl } from '@api/utils/r2.ts'
 
@@ -27,7 +27,7 @@ sign.post(
       username = body.username,
       uuid = body.uuid,
       time = body.time,
-      path_public_key = pathUser.getUserPublicPath(uuid),
+      path_public_key = commonPath.getUserPublicPath(uuid),
       public_key = await c.env.R2.get(path_public_key)
 
     if (public_key) {
@@ -66,9 +66,9 @@ sign.post(
         c.env.JWT_SECRET,
       ),
       uploads: {
-        info: await generateR2SignUrl(c.env, pathUser.getUserInfoPath(uuid), exp),
+        info: await generateR2SignUrl(c.env, commonPath.getUserInfoPath(uuid), exp),
         public: public_key ? null : await generateR2SignUrl(c.env, path_public_key, 120),
-        private: public_key ? null : await generateR2SignUrl(c.env, pathUser.getUserPrivatePath(uuid), 120),
+        private: public_key ? null : await generateR2SignUrl(c.env, commonPath.getUserPrivatePath(uuid), 120),
       },
     })
   },

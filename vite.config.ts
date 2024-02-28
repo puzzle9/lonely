@@ -73,7 +73,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: fileURLToPath(new URL('./web', import.meta.url)) },
-      { find: '@paths', replacement: fileURLToPath(new URL('./paths', import.meta.url)) },
+      { find: '@common', replacement: fileURLToPath(new URL('./common', import.meta.url)) },
       { find: '@protos', replacement: fileURLToPath(new URL('./protos', import.meta.url)) },
     ],
   },

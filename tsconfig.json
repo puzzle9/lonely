@@ -33,8 +33,8 @@
       "@protos/*": [
         "./protos/*"
       ],
-      "@paths/*": [
-        "./paths/*"
+      "@common/*": [
+        "./common/*"
       ],
       "@api/*": [
         "./api/*"
@@ -43,7 +43,7 @@
   },
   "include": [
     "protos/**/*.ts",
-    "paths/**/*.ts",
+    "common/**/*.ts",
     "api/**/*.ts",
     "web/**/*.ts",
     "web/**/*.tsx",

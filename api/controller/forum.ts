@@ -5,6 +5,7 @@ import { ulid } from 'ulidx'
 import * as pb from '@protos/index'
 import { getTimestamp } from '@api/utils/time.ts'
 import { encode } from 'uint8-to-base64'
+import { COLOR_DARK_ROOM } from '@common/colors.ts'
 
 const forum = new Hono<{ Bindings: HonoBindings }>()
 
@@ -131,6 +132,34 @@ WHERE
     ).run()
 
     return c.text('删除成功')
+  },
+)
+
+forum.put(
+  '/block',
+  zValidator(
+    'json',
+    z.object({
+      ulid: z.string(),
+    }),
+  ),
+  async (c) => {
+    let json = await c.req.json()
+
+    // prettier-ignore
+    await c.env.DB.prepare(`
+UPDATE forums SET
+  color = ?
+WHERE
+  ulid = ?
+  AND color != ? 
+    `).bind(
+      COLOR_DARK_ROOM,
+      json.ulid,
+      COLOR_DARK_ROOM
+    ).run()
+
+    return c.text('已关进小黑屋')
   },
 )
 
