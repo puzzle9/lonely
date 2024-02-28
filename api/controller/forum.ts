@@ -150,11 +150,13 @@ forum.put(
     await c.env.DB.prepare(`
 UPDATE forums SET
   color = ?
+  AND updated_at = ?
 WHERE
   ulid = ?
   AND color != ? 
     `).bind(
       COLOR_DARK_ROOM,
+      getTimestamp(),
       json.ulid,
       COLOR_DARK_ROOM
     ).run()
