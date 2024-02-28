@@ -32,6 +32,10 @@
   </n-list>
 </template>
 <script setup lang="ts">
+  defineOptions({
+    name: 'ForumList',
+  })
+
   import { Ref, ref } from 'vue'
   import * as pb from '@protos/index'
   import forumStore from '@/stores/forum.ts'

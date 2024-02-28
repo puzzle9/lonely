@@ -1,14 +1,15 @@
 <template>
   <router-view v-slot="{ Component }">
-    <keep-alive>
-      <component v-if="route.meta.keepAlive" :is="Component" />
+    <keep-alive :include="KEEP_ALIVE_NAME">
+      <component :is="Component" />
     </keep-alive>
-    <component v-if="!route.meta.keepAlive" :is="Component" />
   </router-view>
 </template>
 
 <script setup lang="ts">
-  import { useRoute } from 'vue-router'
-
-  const route = useRoute()
+  /**
+   * https://github.com/vuejs/router/issues/626
+   * 如果再父级不用这个组件 直接 router-view 也是可行的
+   */
+  import { KEEP_ALIVE_NAME } from '@/router'
 </script>
