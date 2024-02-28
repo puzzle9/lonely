@@ -28,8 +28,10 @@
           {{ getUnixFormatDate(info.created_at as string, 'YY-MM-DD HH:mm') }}
         </n-tooltip>
       </template>
-      <template #default>
-        {{ info.data?.body }}
+      <template #default v-if="info.data?.body">
+        <n-scrollbar trigger="none" style="max-height: 30vh">
+          {{ info.data.body }}
+        </n-scrollbar>
       </template>
       <template #footer>
         <n-image-group>
