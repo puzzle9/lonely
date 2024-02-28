@@ -69,8 +69,14 @@
     info: pb.lonely.IForumInfo
   }>()
 
-  const links: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(<[]>props.info.data?.files, (file: pb.lonely.ForumInfo.Data.IFiles) => file.type == pb.lonely.ForumInfo.Data.Files.Type.link)
-  const images: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(<[]>props.info.data?.files, (file: pb.lonely.ForumInfo.Data.IFiles) => file.type == pb.lonely.ForumInfo.Data.Files.Type.image)
+  const links: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(
+    <[]>props.info.data?.files,
+    (file: pb.lonely.ForumInfo.Data.IFiles) => file.type == pb.lonely.ForumInfo.Data.Files.Type.link,
+  )
+  const images: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(
+    <[]>props.info.data?.files,
+    (file: pb.lonely.ForumInfo.Data.IFiles) => file.type == pb.lonely.ForumInfo.Data.Files.Type.image,
+  )
 
   const storeSign = signStore(),
     storeNaive = naiveStore(),
