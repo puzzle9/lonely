@@ -9,7 +9,7 @@ export default defineStore(
   'forum',
   () => {
     const last_post_body = ref()
-    
+
     const forumPost = async (data: pb.lonely.IForumInfo) =>
       instance.post('/forum/post', pb.lonely.ForumInfo.encode(data).finish().slice().buffer, {
         headers: {
