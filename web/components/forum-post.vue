@@ -12,17 +12,22 @@
           {{ storeSign.user_username || '匿' }}
         </n-avatar>
         <!-- 监听不到清除事件-->
-        <n-color-picker
-          v-model:value="post_color"
-          class="color"
-          :modes="['hex']"
-          :swatches="Object.keys(color.ideas)"
-          :actions="['confirm']"
-          size="small"
-          show-preview
-          :disabled="post_submit_loading">
-          <template #label></template>
-        </n-color-picker>
+        <n-tooltip trigger="hover">
+          <template #trigger>
+            <n-color-picker
+              v-model:value="post_color"
+              class="color"
+              :modes="['hex']"
+              :swatches="Object.keys(color.ideas)"
+              :actions="['confirm']"
+              size="small"
+              show-preview
+              :disabled="post_submit_loading">
+              <template #label></template>
+            </n-color-picker>
+          </template>
+          选择一个基于颜色的节点 类似于话题
+        </n-tooltip>
       </template>
       <template #header>
         <n-mention
@@ -52,19 +57,18 @@
           <div class="uploads">
             <div class="ability">
               <n-upload-trigger #="{ handleClick }" abstract>
-                <n-button
-                  v-for="post_upload_button in post_upload_buttons"
-                  type="primary"
-                  quaternary
-                  circle
-                  @click="post_upload_button.click(handleClick)"
-                  :disabled="post_submit_loading">
-                  <template #icon>
-                    <n-icon size="20">
-                      <component :is="post_upload_button.icon"></component>
-                    </n-icon>
+                <n-tooltip trigger="hover" v-for="(post_upload_button, type) in post_upload_buttons" :key="type">
+                  <template #trigger>
+                    <n-button type="primary" quaternary circle @click="post_upload_button.click(handleClick)" :disabled="post_submit_loading">
+                      <template #icon>
+                        <n-icon size="20">
+                          <component :is="post_upload_button.icon"></component>
+                        </n-icon>
+                      </template>
+                    </n-button>
                   </template>
-                </n-button>
+                  {{ post_upload_button.tip }}
+                </n-tooltip>
               </n-upload-trigger>
             </div>
 
@@ -256,6 +260,7 @@
 
   const post_upload_buttons = {
       image: {
+        tip: '图片',
         icon: ImageOutline,
         click: (fn: Function) => {
           post_upload_accept.value = 'image/*'
@@ -264,6 +269,7 @@
         },
       },
       link: {
+        tip: '链接',
         icon: CompassOutline,
         click: () => postUploadButtonTypeTrigger('link'),
       },
