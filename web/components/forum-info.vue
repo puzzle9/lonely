@@ -111,7 +111,6 @@
       no_max_height?: string | boolean
     }>(),
     {
-      info: null,
       hide_block: false,
       no_max_height: '30vh',
     },
