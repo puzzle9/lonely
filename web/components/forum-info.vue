@@ -62,6 +62,7 @@
           trigger="none"
           :style="{
             'max-height': props.no_max_height,
+            'word-break': 'break-all',
           }"
           @click="emits('click_body', forum_ulid)">
           {{ info.data.body }}
