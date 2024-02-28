@@ -12,8 +12,8 @@
         </n-avatar>
       </template>
       <template #header>
-        <span v-if="info.author?.nickname">{{ info.author.nickname }}</span>
-        <span v-if="info.author?.username"> @{{ info.author.username }}</span>
+        <span v-if="info.author?.username">@{{ info.author.username }}</span>
+        <span v-else>{{ info.author?.nickname }}</span>
       </template>
       <template #header-extra>
         <n-flex justify="end">
