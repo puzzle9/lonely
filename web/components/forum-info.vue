@@ -16,17 +16,34 @@
         <span v-if="info.author?.username"> @{{ info.author.username }}</span>
       </template>
       <template #header-extra>
-        <n-tooltip trigger="hover">
-          <template #trigger>
-            <n-popconfirm @positive-click="deleteSubmit" :disabled="!(info.user_uuid == storeSign.user_uuid && unixCompareNow(info.created_at as string))">
-              <template #trigger>
-                {{ getUnixFormNow(info.created_at as string) }}
-              </template>
-              确认删除此贴
-            </n-popconfirm>
-          </template>
-          {{ getUnixFormatDate(info.created_at as string, 'YY-MM-DD HH:mm') }}
-        </n-tooltip>
+        <n-flex justify="end">
+          <n-tooltip trigger="hover">
+            <template #trigger>
+              <n-popconfirm @positive-click="deleteSubmit" :disabled="!(info.user_uuid == storeSign.user_uuid && unixCompareNow(info.created_at as string))">
+                <template #trigger>
+                  {{ getUnixFormNow(info.created_at as string) }}
+                </template>
+                确认删除此贴
+              </n-popconfirm>
+            </template>
+            {{ getUnixFormatDate(info.created_at as string, 'YY-MM-DD HH:mm') }}
+          </n-tooltip>
+          <n-popconfirm v-if="COLOR_DARK_ROOM != info.color" @positive-click="blockSubmit" :show-icon="false" trigger="hover">
+            <template #trigger>
+              <n-button text>
+                <template #icon>
+                  <n-icon>
+                    <ReportOutlined />
+                  </n-icon>
+                </template>
+              </n-button>
+            </template>
+            屏蔽此帖
+          </n-popconfirm>
+        </n-flex>
+      </template>
+      <template #action>
+        <n-flex justify="end"></n-flex>
       </template>
       <template #default v-if="info.data?.body">
         <n-scrollbar trigger="none" style="max-height: 30vh">
@@ -52,22 +69,26 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { ComputedRef } from 'vue'
+  import { ComputedRef, computed } from 'vue'
   import { useArrayFilter } from '@vueuse/core'
   import uniqolor from 'uniqolor'
   import * as pb from '@protos/index'
   import signStore from '@/stores/sign.ts'
   import naiveStore from '@/stores/naive.ts'
   import forumStore from '@/stores/forum.ts'
+  import { COLOR_DARK_ROOM } from '@common/colors.ts'
   import { getUnixFormNow, getUnixFormatDate, unixCompareNow } from '@/utils/dayjs.ts'
 
   import { LinkOutline } from '@vicons/ionicons5'
+  import { ReportOutlined } from '@vicons/material'
 
-  const emits = defineEmits(['delete_success'])
+  const emits = defineEmits(['delete_success', 'black_success'])
 
   const props = defineProps<{
     info: pb.lonely.IForumInfo
   }>()
+
+  const forum_ulid: ComputedRef<string> = computed(() => <string>props.info.ulid)
 
   const links: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(
     <[]>props.info.data?.files,
@@ -83,10 +104,18 @@
     storeForum = forumStore()
 
   const deleteSubmit = () => {
-    let ulid = <string>props.info.ulid
+    let ulid = forum_ulid.value
     storeForum.forumDelete(ulid).then(() => {
       storeNaive.message.success('删除成功')
       emits('delete_success', ulid)
+    })
+  }
+
+  const blockSubmit = () => {
+    let ulid = forum_ulid.value
+    storeForum.forumBlock(ulid).then(() => {
+      storeNaive.message.success('屏蔽成功 已将此帖关进小黑屋')
+      emits('black_success', ulid)
     })
   }
 </script>

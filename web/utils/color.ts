@@ -1,3 +1,4 @@
+import { COLOR_DARK_ROOM } from '@common/colors.ts'
 import naiveStore from '@/stores/naive.ts'
 
 /**
@@ -32,7 +33,7 @@ export const ideas: Record<string, ideas> = {
   },
 
   // Black
-  '#000000': {
+  [COLOR_DARK_ROOM]: {
     light: '天亮了 你问 我答',
     dark: '夜深了 你说 我听',
   },

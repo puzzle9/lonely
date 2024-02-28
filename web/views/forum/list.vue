@@ -5,7 +5,7 @@
       <forum-post ref="forum_post" @color="postChangeColor" @submit_success="postSubmitSuccess" />
     </n-list-item>
     <n-list-item v-for="list in lists" :key="list.ulid">
-      <forum-info @delete_success="postListDelete" :info="list"></forum-info>
+      <forum-info @delete_success="postListRemove" @black_success="postListRemove" :info="list"></forum-info>
     </n-list-item>
     <VueEternalLoading :load="listLoad" v-model:is-initial="list_load_initial" style="margin-top: 10px">
       <template #loading>
@@ -85,7 +85,7 @@
       lists.value = []
       list_load_initial.value = true
     },
-    postListDelete = (ulid: string) => {
+    postListRemove = (ulid: string) => {
       lists.value = lists.value.filter((list) => list.ulid != ulid)
       if (!lists.value.length) {
         list_load_initial.value = true

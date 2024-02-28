@@ -44,10 +44,16 @@ export default defineStore(
         },
       })
 
+    const forumBlock = (ulid: string) =>
+      instance.put('/forum/block', {
+        ulid,
+      })
+
     return {
       forumPost,
       forumLists,
       forumDelete,
+      forumBlock,
     }
   },
   {
