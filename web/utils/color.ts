@@ -1,3 +1,5 @@
+import naiveStore from '@/stores/naive.ts'
+
 /**
  * 基于颜色 呈现类似节点的效果
  * https://htmlcolorcodes.com/
@@ -53,3 +55,13 @@ export const tips: string[] = [
   '说说新鲜事呀',
   '有什么可以匿名分享秘密吗'
 ]
+
+export const getTipByColor = (color: string): string => {
+  if (color != COLOR_DEFAULT && color in ideas) {
+    // @ts-ignore
+    return ideas[color][naiveStore().theme_name]
+  }
+
+  let data = [...tips, ...Object.values(ideas[COLOR_DEFAULT])]
+  return data[Math.floor(Math.random() * data.length)]
+}

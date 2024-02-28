@@ -28,8 +28,10 @@
           {{ getUnixFormatDate(info.created_at as string, 'YY-MM-DD HH:mm') }}
         </n-tooltip>
       </template>
-      <template #default>
-        {{ info.data?.body }}
+      <template #default v-if="info.data?.body">
+        <n-scrollbar trigger="none" style="max-height: 30vh">
+          {{ info.data.body }}
+        </n-scrollbar>
       </template>
       <template #footer>
         <n-image-group>
@@ -67,8 +69,14 @@
     info: pb.lonely.IForumInfo
   }>()
 
-  const links: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(<[]>props.info.data?.files, (file: pb.lonely.ForumInfo.Data.IFiles) => file.type == pb.lonely.ForumInfo.Data.Files.Type.link)
-  const images: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(<[]>props.info.data?.files, (file: pb.lonely.ForumInfo.Data.IFiles) => file.type == pb.lonely.ForumInfo.Data.Files.Type.image)
+  const links: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(
+    <[]>props.info.data?.files,
+    (file: pb.lonely.ForumInfo.Data.IFiles) => file.type == pb.lonely.ForumInfo.Data.Files.Type.link,
+  )
+  const images: ComputedRef<pb.lonely.ForumInfo.Data.IFiles[]> = useArrayFilter(
+    <[]>props.info.data?.files,
+    (file: pb.lonely.ForumInfo.Data.IFiles) => file.type == pb.lonely.ForumInfo.Data.Files.Type.image,
+  )
 
   const storeSign = signStore(),
     storeNaive = naiveStore(),
