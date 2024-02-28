@@ -21,6 +21,17 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
   history: createWebHistory(),
+  /**
+   * fixme: pc 记录滚动存在问题
+   * 这个搭建的有问题 绝对定位 相对定位
+   */
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
   routes,
 })
 
