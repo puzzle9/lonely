@@ -5,7 +5,7 @@ package lonely;
 message ForumInfo {
   // 帖子id
   string ulid = 1;
-  
+
   // 发布者
   string user_uuid = 2;
 
@@ -67,6 +67,11 @@ message ForumInfo {
     Address address = 12;
   }
   Data data = 10;
+
+  // 点赞总数
+  uint32 count_like = 11;
+  // 评论总数
+  uint32 count_comment = 12;
 
   string created_at = 14;
 }

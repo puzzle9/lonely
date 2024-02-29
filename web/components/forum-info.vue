@@ -1,6 +1,6 @@
 <template>
   <div class="post_info">
-    <n-thing content-indented>
+    <n-thing :content-indented="props.indented">
       <template #avatar>
         <n-avatar
           round
@@ -55,7 +55,17 @@
         </n-flex>
       </template>
       <template #action>
-        <n-flex justify="end"></n-flex>
+        <n-flex justify="space-between">
+          <action-like :type="LIKE_TYPE.forum_info" :related_id="forum_ulid" :count_like="Number(info.count_like)" />
+          <action-comment
+            :type="COMMENT_TYPE.forum_info"
+            :related_id="forum_ulid"
+            :count_comment="Number(count_comment)"
+            :disabled="false"
+            :disable_modal="comment_display_content" />
+          <!-- 此处应该放点啥子 不过还没想好-->
+          <div></div>
+        </n-flex>
       </template>
       <template #default v-if="info.data?.body">
         <n-scrollbar
@@ -84,11 +94,15 @@
         </div>
       </template>
     </n-thing>
+    <template v-if="comment_display_content">
+      <n-divider title-placement="left" dashed> 评论列表</n-divider>
+      <comment-list :type="COMMENT_TYPE.forum_info" :related_id="forum_ulid" @count_comment="updateCountComment" />
+    </template>
   </div>
 </template>
 <script setup lang="ts">
-  import { ComputedRef, computed } from 'vue'
-  import { useRouter } from 'vue-router'
+  import { ComputedRef, computed, ref } from 'vue'
+  import { useRoute, useRouter } from 'vue-router'
   import { useArrayFilter, useClipboard } from '@vueuse/core'
   import uniqolor from 'uniqolor'
   import * as pb from '@protos/index'
@@ -99,8 +113,11 @@
   import { getUnixFormNow, getUnixFormatDate, unixCompareNow } from '@/utils/dayjs.ts'
   import { LinkOutline, ShareSocialOutline } from '@vicons/ionicons5'
   import { ReportOutlined } from '@vicons/material'
+  import { LIKE_TYPE } from '@common/like.ts'
+  import { COMMENT_TYPE } from '@common/comment.ts'
 
-  const router = useRouter()
+  const route = useRoute(),
+    router = useRouter()
 
   const emits = defineEmits(['delete_success', 'black_success', 'click_body'])
 
@@ -109,10 +126,12 @@
       info: pb.lonely.IForumInfo
       hide_block?: boolean
       no_max_height?: string | boolean
+      indented?: boolean
     }>(),
     {
       hide_block: false,
       no_max_height: '30vh',
+      indented: true,
     },
   )
 
@@ -160,6 +179,13 @@
       }`,
     )
   }
+
+  const count_comment = ref(props.info.count_comment)
+
+  const comment_display_content = computed(() => route.name == 'ForumInfo'),
+    updateCountComment = (value: number) => {
+      count_comment.value = value
+    }
 </script>
 <style scoped lang="stylus">
   .images

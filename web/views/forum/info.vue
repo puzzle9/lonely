@@ -3,7 +3,7 @@
   <n-card :bordered="false">
     <n-spin v-if="forum_loading" />
     <template v-else>
-      <forum-info v-if="forum_info.ulid" :info="forum_info" hide_block no_max_height></forum-info>
+      <forum-info v-if="forum_info.ulid" :info="forum_info" hide_block no_max_height :indented="false"></forum-info>
       <n-result v-else status="404" title="找不到此帖子">
         <template #footer>
           <n-button @click="nav.goBack()">返回看看</n-button>

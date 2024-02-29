@@ -113,7 +113,7 @@
     }
 
   const toPostInfo = (ulid: string) => {
-    // todo: 等评论功能出来后再放开 可进详情页
+    // todo: 样式问题还没搞定 不过弹窗模式的评论 也不用进详情页了
     return
     router.push({
       name: 'ForumInfo',

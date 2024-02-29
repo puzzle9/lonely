@@ -18,7 +18,7 @@
               v-model:value="post_color"
               class="color"
               :modes="['hex']"
-              :swatches="Object.keys(color.ideas)"
+              :swatches="Object.keys(colors)"
               :actions="['confirm']"
               size="small"
               show-preview
@@ -30,18 +30,7 @@
         </n-tooltip>
       </template>
       <template #default>
-        <n-mention
-          type="textarea"
-          v-model:value.trim="post_form.body"
-          :disabled="post_submit_loading"
-          :autosize="{
-            minRows: 2,
-            maxRows: 20,
-          }"
-          :options="mention_options"
-          :loading="mention_loading"
-          @search="mentionSearch"
-          :placeholder="post_placeholder" />
+        <mention :min="2" :max="20" :disabled="post_submit_loading" :placeholder="post_placeholder" v-model:value="post_form.body" />
       </template>
 
       <template #footer>
@@ -117,7 +106,7 @@
   import naiveStore from '@/stores/naive.ts'
   import forumStore from '@/stores/forum.ts'
   import fileStore, { fileImage, blobToUint8Array } from '@/stores/file.ts'
-  import * as color from '@/utils/color.ts'
+  import { colors, getDefaultTipByColor, COLOR_DEFAULT } from '@/utils/tips.ts'
 
   const emits = defineEmits(['color', 'submit_success'])
 
@@ -133,30 +122,9 @@
 
   import { ImageOutline, CompassOutline } from '@vicons/ionicons5'
 
-  const mention_loading = ref(false),
-    mention_options = ref<MentionOption[]>([]),
-    mentionSearch = (value: string) => {
-      mention_loading.value = true
-      mention_options.value = []
-      storeUser.searchUserByLocal(value).then((row) => {
-        row.map((user) => {
-          let username = user.username
-          /**
-           * todo: 不支持 包含搜索
-           * https://github.com/tusen-ai/naive-ui/pull/5721
-           */
-          mention_options.value.push({
-            label: `${user.nickname} ${username ? `@${username}` : ''}`,
-            value: <string>(username || user.nickname),
-          })
-        })
-        mention_loading.value = false
-      })
-    }
-
-  const post_color = useStorage('post_color', color.COLOR_DEFAULT),
+  const post_color = useStorage('post_color', COLOR_DEFAULT),
     // @ts-ignore
-    post_placeholder = computed(() => color.getTipByColor(post_color.value)),
+    post_placeholder = computed(() => getDefaultTipByColor(post_color.value)),
     post_visibilitys = {
       公开: pb.lonely.ForumInfo.ForumInfoVisibility.public,
       私密: pb.lonely.ForumInfo.ForumInfoVisibility.privacy,

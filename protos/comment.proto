@@ -1,0 +1,43 @@
+syntax = "proto3";
+package lonely;
+
+message Comment {
+  // 评论id
+  string ulid = 1;
+
+  // 类型
+  enum Type {
+    forum_info = 0;
+  }
+  Type type = 2;
+
+  // 关联id
+  string related_id = 3;
+  // 再想要不要整楼中楼回复 转念一想 有点复杂 4
+
+  // 用户id
+  string user_uuid = 5;
+
+  // 内容
+  message Data {
+    // 作者信息
+    message Author {
+      // 用户名
+      string username = 1;
+      // 昵称
+      string nickname = 2;
+      // 头像
+      bytes avatar = 3;
+    }
+    Author author = 1;
+
+    // 评论文本内容
+    string body = 2;
+  }
+  Data data = 6;
+
+  // 点赞总数
+  uint32 count_like = 8;
+
+  string created_at = 14;
+}
