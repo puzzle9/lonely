@@ -10,7 +10,24 @@
   <title>Lonely</title>
 </head>
 <body>
-<div id="app"></div>
+<div id="app">
+  <div>
+    正在努力的加载中
+    <span id="loading" style="word-break: break-word"></span>
+  </div>
+</div>
+<script>
+  let loading_interval = setInterval(() => {
+    let loading = document.getElementById('loading')
+    if (loading) {
+      loading.append('。')
+      console.log('还在加载呢')
+    } else {
+      clearInterval(loading_interval)
+      console.info(`加载完成啦 ${loading_interval}`)
+    }
+  }, 500)
+</script>
 <script type="module" src="/web/main.ts"></script>
 </body>
 </html>

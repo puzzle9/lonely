@@ -61,8 +61,14 @@
             <action-like :type="LIKE_TYPE.forum_comment" :related_id="<string>list.ulid" :count_like="Number(list.count_like)" />
           </n-flex>
         </template>
-        <template #default>
-          {{ list.data?.body }}
+        <template #default v-if="list.data?.body">
+          <n-scrollbar
+            trigger="none"
+            :style="{
+              'max-height': '30vh',
+            }">
+            <text-body :body="list.data.body" />
+          </n-scrollbar>
         </template>
       </n-thing>
     </n-list-item>
