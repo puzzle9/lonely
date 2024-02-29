@@ -5,6 +5,7 @@ protos/index.*
 .dev.vars
 /*.d.ts
 /dev-dist
+/lonely.db
 
 # idea
 .vscode/*
