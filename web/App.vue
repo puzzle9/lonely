@@ -1,5 +1,6 @@
 <template>
   <n-config-provider :theme="storeNaive.getTheme" :locale="zhCN" :date-locale="dateZhCN">
+    <n-global-style />
     <Sign />
     <RouteView />
   </n-config-provider>

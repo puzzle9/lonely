@@ -1,0 +1,17 @@
+syntax = "proto3";
+package lonely;
+
+message Like {
+  // 类型
+  enum Type {
+    forum_info = 0;
+    forum_comment = 1;
+  }
+  Type type = 1;
+
+  // 关联id
+  string related_id = 2;
+  // 用户id
+  string user_uuid = 3;
+  string created_at = 14;
+}

@@ -6,14 +6,14 @@ import naiveStore from '@/stores/naive.ts'
  * https://htmlcolorcodes.com/
  */
 
-interface ideas {
+interface colors {
   light?: string
   dark?: string
 }
 
 export const COLOR_DEFAULT = '#FFFFFFFF'
 
-export const ideas: Record<string, ideas> = {
+export const colors: Record<string, colors> = {
   // White
   [COLOR_DEFAULT]: {
     light: '我还是个纯洁的孩子',
@@ -49,7 +49,7 @@ export const ideas: Record<string, ideas> = {
 }
 
 // prettier-ignore
-export const tips: string[] = [
+export const default_tips: string[] = [
   // ...
   '记录一下此刻呀',
   '恭喜发现一个隐藏领域',
@@ -57,17 +57,31 @@ export const tips: string[] = [
   '有什么可以匿名分享秘密吗'
 ]
 
-export const getTipByColor = (color: string): string => {
+// prettier-ignore
+export const comment_tips: string[] = [
+  // ...
+  '良言一句三冬暖',
+  '说点啥子',
+  '留下脚印',
+  '快来评论呀',
+  '参与讨论'
+]
+
+const getRandom = (data: string[]): string => data[Math.floor(Math.random() * data.length)]
+
+export const getDefaultTipByColor = (color: string): string => {
   let tip: string | undefined
-  if (color != COLOR_DEFAULT && color in ideas) {
+  if (color != COLOR_DEFAULT && color in colors) {
     // @ts-ignore
-    tip = ideas[color][naiveStore().theme_name]
+    tip = colors[color][naiveStore().theme_name]
   }
 
   if (!tip) {
-    let data = [...tips, ...Object.values(ideas[COLOR_DEFAULT])]
-    tip = <string>data[Math.floor(Math.random() * data.length)]
+    let data = [...default_tips, ...Object.values(colors[COLOR_DEFAULT])]
+    tip = getRandom(data)
   }
 
   return tip
 }
+
+export const getCommentTip = () => getRandom(comment_tips)

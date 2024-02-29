@@ -17,5 +17,7 @@ app.get('/', (c) => {
 app.route('/sign', controller.Sign)
 app.route('/file', controller.File)
 app.route('/forum', controller.Forum)
+app.route('/like', controller.Like)
+app.route('/comment', controller.Comment)
 
 export default app
