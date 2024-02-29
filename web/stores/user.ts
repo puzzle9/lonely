@@ -83,10 +83,7 @@ export default defineStore(
 
     const searchUserByLocal = async (value: string) =>
       await db.user
-        .filter((row) => {
-          console.log(Boolean(row.username?.includes(value) || row.nickname?.includes(value)))
-          return Boolean(row.username?.includes(value) || row.nickname?.includes(value))
-        })
+        .filter((row) => Boolean(row.username?.includes(value) || row.nickname?.includes(value)))
         .limit(10)
         .toArray()
 
