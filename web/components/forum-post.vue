@@ -29,7 +29,7 @@
           选择一个基于颜色的节点 类似于话题
         </n-tooltip>
       </template>
-      <template #header>
+      <template #default>
         <n-mention
           type="textarea"
           v-model:value.trim="post_form.body"
@@ -291,9 +291,6 @@
   .post
     .color
       height 18px
-
-    :deep(.n-thing-header)
-      display block
 
     .uploads
       display flex
