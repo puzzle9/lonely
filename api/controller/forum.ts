@@ -151,7 +151,7 @@ forum.put(
     await c.env.DB.prepare(`
 UPDATE forums SET
   color = ?
-  AND updated_at = ?
+  ,updated_at = ?
 WHERE
   ulid = ?
   AND color != ? 
