@@ -2616,31 +2616,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:^10.8.0":
-  version: 10.8.0
-  resolution: "@vueuse/core@npm:10.8.0"
+"@vueuse/core@npm:^10.9.0":
+  version: 10.9.0
+  resolution: "@vueuse/core@npm:10.9.0"
   dependencies:
     "@types/web-bluetooth": "npm:^0.0.20"
-    "@vueuse/metadata": "npm:10.8.0"
-    "@vueuse/shared": "npm:10.8.0"
+    "@vueuse/metadata": "npm:10.9.0"
+    "@vueuse/shared": "npm:10.9.0"
     vue-demi: "npm:>=0.14.7"
-  checksum: 3e0504c406d194e20525edbf6cf13a20c87cca8f86aea0fa6a5800b72f8e556306e059abcf913da671a8ca6e8231bc586a0c7d3fa7426fa3c955d9e54142b8f4
+  checksum: d5c90a5bdd2dc5123a594e6ff9bc96f70f8f062fe9749d1c194d15516acfee7dd2f99ef9d1c6b06a9d18e7a13a0287ff0e5ee8a2565a04810196c90bb13daf91
   languageName: node
   linkType: hard
 
-"@vueuse/metadata@npm:10.8.0":
-  version: 10.8.0
-  resolution: "@vueuse/metadata@npm:10.8.0"
-  checksum: 64903ee0d2cb422c0b48d67c65b83498902378bb986411a160ee7d34f0aaa0d93e0f54b3197473245dd17c2bccaad26ea11a3be7d0640d5adf3ec580e56f82a2
+"@vueuse/metadata@npm:10.9.0":
+  version: 10.9.0
+  resolution: "@vueuse/metadata@npm:10.9.0"
+  checksum: 7f647b2ae73ff86c4de658c84a51988f7cdfec1643e1e706d5b29034bd949e240cffacf52505ab8e9223bb245f7bafe7f7bfa5c32702172ba29afc4aef96b475
   languageName: node
   linkType: hard
 
-"@vueuse/shared@npm:10.8.0":
-  version: 10.8.0
-  resolution: "@vueuse/shared@npm:10.8.0"
+"@vueuse/shared@npm:10.9.0":
+  version: 10.9.0
+  resolution: "@vueuse/shared@npm:10.9.0"
   dependencies:
     vue-demi: "npm:>=0.14.7"
-  checksum: a34567cba79951211bf7d0d0dbe4f79cca17026399d9e5d31460048bb3096a0560f8bb3e30aea9977983075ef01406f34c348f959c7bde299d9dd932f769e53d
+  checksum: 55593c325b9dc15cfe9eaf84ca2a757a0c418491be56760f5560a641dfe2579c72cb55ccd04ead71217a97fc6b17ad7b7b7b9177b376bc6967174121707d1c49
   languageName: node
   linkType: hard
 
@@ -4886,7 +4886,7 @@ __metadata:
     "@vicons/material": "npm:^0.12.0"
     "@vitejs/plugin-vue": "npm:^5.0.3"
     "@vitejs/plugin-vue-jsx": "npm:^3.1.0"
-    "@vueuse/core": "npm:^10.8.0"
+    "@vueuse/core": "npm:^10.9.0"
     aws4fetch: "npm:^1.0.17"
     axios: "npm:^1.6.7"
     dayjs: "npm:^1.11.10"
