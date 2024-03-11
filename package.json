@@ -50,7 +50,7 @@
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "naive-ui": "^2.38.1",
     "protobufjs-cli": "^1.1.2",
-    "stylus": "^0.62.0",
+    "stylus": "^0.63.0",
     "typescript": "^5.2.2",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
