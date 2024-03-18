@@ -3378,9 +3378,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drizzle-orm@npm:^0.30.1":
-  version: 0.30.1
-  resolution: "drizzle-orm@npm:0.30.1"
+"drizzle-orm@npm:^0.30.2":
+  version: 0.30.2
+  resolution: "drizzle-orm@npm:0.30.2"
   peerDependencies:
     "@aws-sdk/client-rds-data": ">=3"
     "@cloudflare/workers-types": ">=3"
@@ -3452,7 +3452,7 @@ __metadata:
       optional: true
     sqlite3:
       optional: true
-  checksum: 1cc88489447606054283159dfa8ca1d7a885991f6bcb2f857cb217d443d86300de0e2ff50099c99779f613e04427e70f0116368df5a7a316eed7ccdbdd6e7740
+  checksum: 41a8e5293164b133dd576bbe38cdd4763efc593ca7df73b671606d1892fd4387ff444d347bc2a022252ca8baad41b7b6b0f491f0d9aa897e1a87cc8533fa9df2
   languageName: node
   linkType: hard
 
@@ -4955,7 +4955,7 @@ __metadata:
     axios: "npm:^1.6.7"
     dayjs: "npm:^1.11.10"
     dexie: "npm:^3.2.5"
-    drizzle-orm: "npm:^0.30.1"
+    drizzle-orm: "npm:^0.30.2"
     ed25519-keygen: "npm:^0.4.10"
     hono: "npm:^4.0.9"
     naive-ui: "npm:^2.38.1"
