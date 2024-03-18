@@ -5152,9 +5152,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miniflare@npm:3.20240304.0":
-  version: 3.20240304.0
-  resolution: "miniflare@npm:3.20240304.0"
+"miniflare@npm:3.20240304.2":
+  version: 3.20240304.2
+  resolution: "miniflare@npm:3.20240304.2"
   dependencies:
     "@cspotcode/source-map-support": "npm:0.8.1"
     acorn: "npm:^8.8.0"
@@ -5170,7 +5170,7 @@ __metadata:
     zod: "npm:^3.20.6"
   bin:
     miniflare: bootstrap.js
-  checksum: b15603c591a488045196014f6c76f940a241c3e77df64d5091d3dd639df13e07446d436d30022cd1df73ff5773a76478c9741880391c936d889a41ced5aa46ec
+  checksum: 30e1c7e47615c7f0b8c1d46dc0a40132edc4841d41bdb4a5197389a8569c60d115fb95820ba39c99ff6a76d436418fedab15930a73ca1bf6c16c91d5e8481af8
   languageName: node
   linkType: hard
 
@@ -7379,8 +7379,8 @@ __metadata:
   linkType: hard
 
 "wrangler@npm:^3":
-  version: 3.32.0
-  resolution: "wrangler@npm:3.32.0"
+  version: 3.34.2
+  resolution: "wrangler@npm:3.34.2"
   dependencies:
     "@cloudflare/kv-asset-handler": "npm:0.3.1"
     "@esbuild-plugins/node-globals-polyfill": "npm:^0.2.3"
@@ -7389,7 +7389,7 @@ __metadata:
     chokidar: "npm:^3.5.3"
     esbuild: "npm:0.17.19"
     fsevents: "npm:~2.3.2"
-    miniflare: "npm:3.20240304.0"
+    miniflare: "npm:3.20240304.2"
     nanoid: "npm:^3.3.3"
     path-to-regexp: "npm:^6.2.0"
     resolve: "npm:^1.22.8"
@@ -7408,7 +7408,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: aeb2b5b96d6aad7650f8cee756c749a2447bf72a3a68e7d27073e328defcd272e826dedee2a12713c4acabfae3f43ea351bcfe41ddbdbb267d15e3509c7214db
+  checksum: 01906114a83d296b8d0c334cc9921393338cb8fecf884d10796924fb48f0f1502bd9b51eda6e791f281d81911471fc2912105202a182dab04b032885af4cc73b
   languageName: node
   linkType: hard
 
