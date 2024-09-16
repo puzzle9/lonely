@@ -2631,31 +2631,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:^10.9.0":
-  version: 10.9.0
-  resolution: "@vueuse/core@npm:10.9.0"
+"@vueuse/core@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "@vueuse/core@npm:11.0.3"
   dependencies:
     "@types/web-bluetooth": "npm:^0.0.20"
-    "@vueuse/metadata": "npm:10.9.0"
-    "@vueuse/shared": "npm:10.9.0"
-    vue-demi: "npm:>=0.14.7"
-  checksum: d5c90a5bdd2dc5123a594e6ff9bc96f70f8f062fe9749d1c194d15516acfee7dd2f99ef9d1c6b06a9d18e7a13a0287ff0e5ee8a2565a04810196c90bb13daf91
+    "@vueuse/metadata": "npm:11.0.3"
+    "@vueuse/shared": "npm:11.0.3"
+    vue-demi: "npm:>=0.14.10"
+  checksum: 9b8266d7d7d3e2942b632217da6dc651ef7394b1744736941f48e32d73db3ccd1a5684a70d40af9c956d58f74e4719a6fa31a884cb8f76d4e09f762dbf0bfc0a
   languageName: node
   linkType: hard
 
-"@vueuse/metadata@npm:10.9.0":
-  version: 10.9.0
-  resolution: "@vueuse/metadata@npm:10.9.0"
-  checksum: 7f647b2ae73ff86c4de658c84a51988f7cdfec1643e1e706d5b29034bd949e240cffacf52505ab8e9223bb245f7bafe7f7bfa5c32702172ba29afc4aef96b475
+"@vueuse/metadata@npm:11.0.3":
+  version: 11.0.3
+  resolution: "@vueuse/metadata@npm:11.0.3"
+  checksum: d6ad604bd59b59f3342e5c227efc322e562150550003c82527cd32be97ae4e28654eacca06870ceec9b5b835c61056d83edfdfe6ff6c856f53f6a6302790ae53
   languageName: node
   linkType: hard
 
-"@vueuse/shared@npm:10.9.0":
-  version: 10.9.0
-  resolution: "@vueuse/shared@npm:10.9.0"
+"@vueuse/shared@npm:11.0.3":
+  version: 11.0.3
+  resolution: "@vueuse/shared@npm:11.0.3"
   dependencies:
-    vue-demi: "npm:>=0.14.7"
-  checksum: 55593c325b9dc15cfe9eaf84ca2a757a0c418491be56760f5560a641dfe2579c72cb55ccd04ead71217a97fc6b17ad7b7b7b9177b376bc6967174121707d1c49
+    vue-demi: "npm:>=0.14.10"
+  checksum: 3d42bf185dcfd17aa20f2381271057cf55484c983795ed211c69586526b7b80ec5641a476b0ed8645dc19991203396b5a7c6219e93f9a79fab8f2ab47f680448
   languageName: node
   linkType: hard
 
@@ -4950,7 +4950,7 @@ __metadata:
     "@vicons/material": "npm:^0.12.0"
     "@vitejs/plugin-vue": "npm:^5.0.3"
     "@vitejs/plugin-vue-jsx": "npm:^3.1.0"
-    "@vueuse/core": "npm:^10.9.0"
+    "@vueuse/core": "npm:^11.0.3"
     aws4fetch: "npm:^1.0.18"
     axios: "npm:^1.6.7"
     dayjs: "npm:^1.11.10"
@@ -6979,7 +6979,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-demi@npm:>=0.14.5, vue-demi@npm:>=0.14.7":
+"vue-demi@npm:>=0.14.10":
+  version: 0.14.10
+  resolution: "vue-demi@npm:0.14.10"
+  peerDependencies:
+    "@vue/composition-api": ^1.0.0-rc.1
+    vue: ^3.0.0-0 || ^2.6.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  bin:
+    vue-demi-fix: bin/vue-demi-fix.js
+    vue-demi-switch: bin/vue-demi-switch.js
+  checksum: a9ed8712fa36d01bc13c39757f95f30cebf42d557b99e94bff86d8660c81f2911b41220f7affc023d1ffcc19e13999e4a83019991e264787cca2c616e83aea48
+  languageName: node
+  linkType: hard
+
+"vue-demi@npm:>=0.14.5":
   version: 0.14.7
   resolution: "vue-demi@npm:0.14.7"
   peerDependencies:
