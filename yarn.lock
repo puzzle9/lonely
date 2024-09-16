@@ -4855,10 +4855,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"layerr@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "layerr@npm:2.0.1"
-  checksum: c1ff4472e886bc84935cd8652ddf436a015fbe4203a897c4b9f50df5bd79f0adda0d0ff16c12b7a9185337c9dc1e819649e2f1a839f74415515bbd57bfc58b2f
+"layerr@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "layerr@npm:3.0.0"
+  checksum: 320c9b9cf1392c73c9ff8f8d1bb7a782093ac7341fe5d7fea6ebfeea6d785af8e0fc573541431b6ffcb268577f8aea66168757e73a15035568a00ab9e4370705
   languageName: node
   linkType: hard
 
@@ -4967,7 +4967,7 @@ __metadata:
     stylus: "npm:^0.63.0"
     typescript: "npm:^5.2.2"
     uint8-to-base64: "npm:^0.2.0"
-    ulidx: "npm:^2.3.0"
+    ulidx: "npm:^2.4.1"
     uniqolor: "npm:^1.1.1"
     unplugin-auto-import: "npm:^0.17.5"
     unplugin-vue-components: "npm:^0.26.0"
@@ -6650,12 +6650,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ulidx@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "ulidx@npm:2.3.0"
+"ulidx@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "ulidx@npm:2.4.1"
   dependencies:
-    layerr: "npm:^2.0.1"
-  checksum: 4be5f04dfd341ffbf3aa963613cf780e5fe983db9f696933fddf062b789c270b441f4f77270e5c94f900754fcc72201629a84d0262778ba87f4376f0d2b93f53
+    layerr: "npm:^3.0.0"
+  checksum: 3cbe05123b4b49d262e26cd0edd3ac38a4f9e97f043d47ae7daa88502748881d1615d832e3bcb29698ca2429947c24494929ba35b40d6bf38df891cb15642d2e
   languageName: node
   linkType: hard
 
