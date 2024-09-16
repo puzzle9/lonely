@@ -4958,7 +4958,7 @@ __metadata:
     drizzle-orm: "npm:^0.30.1"
     ed25519-keygen: "npm:^0.4.10"
     hono: "npm:^4.0.9"
-    naive-ui: "npm:^2.38.1"
+    naive-ui: "npm:^2.39.0"
     nanoid: "npm:^5.0.5"
     pinia: "npm:^2.1.7"
     pinia-plugin-persistedstate: "npm:^3.2.1"
@@ -5336,9 +5336,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"naive-ui@npm:^2.38.1":
-  version: 2.38.1
-  resolution: "naive-ui@npm:2.38.1"
+"naive-ui@npm:^2.39.0":
+  version: 2.39.0
+  resolution: "naive-ui@npm:2.39.0"
   dependencies:
     "@css-render/plugin-bem": "npm:^0.15.12"
     "@css-render/vue3-ssr": "npm:^0.15.12"
@@ -5361,7 +5361,7 @@ __metadata:
     vueuc: "npm:^0.4.58"
   peerDependencies:
     vue: ^3.0.0
-  checksum: e0ec0df98ae2b7afdd7caa335eefa1d5d4e65c40397f17525200d88ce1b0022386efcd5f198b05bc54c7a91317a7382fdd27b617dc78ed91c89c5cc18948d5bd
+  checksum: fa3301166bd0ae8f43567afbead5d9139d53205868b5d5eebfc5c85ccb52c79373d48b36f1e9c2ab626ebf98d1aac1c52f834a1f5879de0dd9e2d9e8748241f5
   languageName: node
   linkType: hard
 
