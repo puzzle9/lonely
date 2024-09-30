@@ -1348,7 +1348,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.8.4":
   version: 7.24.0
   resolution: "@babel/runtime@npm:7.24.0"
   dependencies:
@@ -1457,21 +1457,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@css-render/plugin-bem@npm:^0.15.12":
-  version: 0.15.12
-  resolution: "@css-render/plugin-bem@npm:0.15.12"
+"@css-render/plugin-bem@npm:^0.15.14":
+  version: 0.15.14
+  resolution: "@css-render/plugin-bem@npm:0.15.14"
   peerDependencies:
-    css-render: ~0.15.12
-  checksum: ac16eef361e97cd361b4295598d4ff0c2e6fcafe824856203ce58721f672d7d4c4f2f5ae90ee581e06362b9d2bc41a715cff92a53397865e6219c19d41287f33
+    css-render: ~0.15.14
+  checksum: 97330ed071fe40896002a4e1e36fb007ff054e95e1153540810b0b0358b8bd2d1d549b625dae3cac679d9aea384ddd25cee71d3bfc2d8ad648fea21780e0ad68
   languageName: node
   linkType: hard
 
-"@css-render/vue3-ssr@npm:^0.15.10, @css-render/vue3-ssr@npm:^0.15.12":
+"@css-render/vue3-ssr@npm:^0.15.10":
   version: 0.15.12
   resolution: "@css-render/vue3-ssr@npm:0.15.12"
   peerDependencies:
     vue: ^3.0.11
   checksum: 09863965d6f6020673b5df68b0d112f0c05fc308061779d7a79e5d4990daada0dd33d9133edc4099af2a90e8f6b7b6ad3c6d3f23a4b92ca8d6ef09f3bce4abe6
+  languageName: node
+  linkType: hard
+
+"@css-render/vue3-ssr@npm:^0.15.14":
+  version: 0.15.14
+  resolution: "@css-render/vue3-ssr@npm:0.15.14"
+  peerDependencies:
+    vue: ^3.0.11
+  checksum: c2dffb2c1ca71ba1a07b9718aeca88a0253348f99e212e94395f7a9c431ab38cd6e843c8995fcf6b2c4ad8a2a9df1b2b362e3036d878ee0f1d113f677f48a156
   languageName: node
   linkType: hard
 
@@ -3218,13 +3227,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-render@npm:^0.15.10, css-render@npm:^0.15.12":
+"css-render@npm:^0.15.10":
   version: 0.15.12
   resolution: "css-render@npm:0.15.12"
   dependencies:
     "@emotion/hash": "npm:~0.8.0"
     csstype: "npm:~3.0.5"
   checksum: 32d78f5e03b1af23d09dd77af9d008a702f77754c6a7d75f213f7310e5c1e7b50cafd55314f9255eec0e6b78b6da28dbe2b70fd75eabbc44a7f216d9fb7f4710
+  languageName: node
+  linkType: hard
+
+"css-render@npm:^0.15.14":
+  version: 0.15.14
+  resolution: "css-render@npm:0.15.14"
+  dependencies:
+    "@emotion/hash": "npm:~0.8.0"
+    csstype: "npm:~3.0.5"
+  checksum: 3ce11665942f4386ce419676dc52290dca5cf558d37002d7d995e975c6d8f534deaad35f965ac3381ae273fb79526731a90b38559ef442b0d1303d8d22247baa
   languageName: node
   linkType: hard
 
@@ -3282,21 +3301,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns-tz@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "date-fns-tz@npm:2.0.1"
+"date-fns-tz@npm:^3.1.3":
+  version: 3.2.0
+  resolution: "date-fns-tz@npm:3.2.0"
   peerDependencies:
-    date-fns: 2.x
-  checksum: f860dda9e3d38bc99dc325c678cafb94b3a18c12b1fea0e2f4e451396ea6c4cacced683066c669a67ec380f64fdda83aa4c414a207029b647faa2b76b2a5c6e3
+    date-fns: ^3.0.0 || ^4.0.0
+  checksum: 3f43300a4335d59f3515dc5196c66b4b56ef2af129eb82e4445ce0983e8ef31a5d038bc0406d669946bbbcf52ed953527527aa28b4a810995d6631a54655abcc
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "date-fns@npm:2.30.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.21.0"
-  checksum: e4b521fbf22bc8c3db332bbfb7b094fd3e7627de0259a9d17c7551e2d2702608a7307a449206065916538e384f37b181565447ce2637ae09828427aed9cb5581
+"date-fns@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "date-fns@npm:3.6.0"
+  checksum: 0b5fb981590ef2f8e5a3ba6cd6d77faece0ea7f7158948f2eaae7bbb7c80a8f63ae30b01236c2923cf89bb3719c33aeb150c715ea4fe4e86e37dcf06bed42fb6
   languageName: node
   linkType: hard
 
@@ -4958,7 +4975,7 @@ __metadata:
     drizzle-orm: "npm:^0.30.1"
     ed25519-keygen: "npm:^0.4.10"
     hono: "npm:^4.0.9"
-    naive-ui: "npm:^2.38.1"
+    naive-ui: "npm:^2.40.1"
     nanoid: "npm:^5.0.5"
     pinia: "npm:^2.1.7"
     pinia-plugin-persistedstate: "npm:^3.2.1"
@@ -5336,20 +5353,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"naive-ui@npm:^2.38.1":
-  version: 2.38.1
-  resolution: "naive-ui@npm:2.38.1"
+"naive-ui@npm:^2.40.1":
+  version: 2.40.1
+  resolution: "naive-ui@npm:2.40.1"
   dependencies:
-    "@css-render/plugin-bem": "npm:^0.15.12"
-    "@css-render/vue3-ssr": "npm:^0.15.12"
+    "@css-render/plugin-bem": "npm:^0.15.14"
+    "@css-render/vue3-ssr": "npm:^0.15.14"
     "@types/katex": "npm:^0.16.2"
     "@types/lodash": "npm:^4.14.198"
     "@types/lodash-es": "npm:^4.17.9"
     async-validator: "npm:^4.2.5"
-    css-render: "npm:^0.15.12"
+    css-render: "npm:^0.15.14"
     csstype: "npm:^3.1.3"
-    date-fns: "npm:^2.30.0"
-    date-fns-tz: "npm:^2.0.0"
+    date-fns: "npm:^3.6.0"
+    date-fns-tz: "npm:^3.1.3"
     evtd: "npm:^0.2.4"
     highlight.js: "npm:^11.8.0"
     lodash: "npm:^4.17.21"
@@ -5358,10 +5375,10 @@ __metadata:
     treemate: "npm:^0.3.11"
     vdirs: "npm:^0.1.8"
     vooks: "npm:^0.2.12"
-    vueuc: "npm:^0.4.58"
+    vueuc: "npm:^0.4.63"
   peerDependencies:
     vue: ^3.0.0
-  checksum: e0ec0df98ae2b7afdd7caa335eefa1d5d4e65c40397f17525200d88ce1b0022386efcd5f198b05bc54c7a91317a7382fdd27b617dc78ed91c89c5cc18948d5bd
+  checksum: 06f75292aab94bf5c2b76ec934f9570fc840362dfaee06e6b95df883e6ab96b9797d8b85733653738a1fbf33b2e9d4ba824625babf6954230d2d532ae93f1962
   languageName: node
   linkType: hard
 
@@ -7049,9 +7066,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vueuc@npm:^0.4.58":
-  version: 0.4.58
-  resolution: "vueuc@npm:0.4.58"
+"vueuc@npm:^0.4.63":
+  version: 0.4.64
+  resolution: "vueuc@npm:0.4.64"
   dependencies:
     "@css-render/vue3-ssr": "npm:^0.15.10"
     "@juggle/resize-observer": "npm:^3.3.1"
@@ -7062,7 +7079,7 @@ __metadata:
     vooks: "npm:^0.2.4"
   peerDependencies:
     vue: ^3.0.11
-  checksum: abaf02ced997f294988b8670d586387535313c16dfc3fb994e9c59a7551ef5903a27c3f60c064955916ddf209768604918a08d281a9ac00c472fe4bdd44b124f
+  checksum: 476cb2f302e55a13b474ec6b811b39a0e0acdc74e8b2a4a4dfd001cb57cf8aba67f2018f7cb23f45fa707b3eb487ada604a03389e16f3b21c16d5acfbfa068d8
   languageName: node
   linkType: hard
 
