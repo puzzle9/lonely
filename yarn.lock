@@ -1927,10 +1927,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/ciphers@npm:^0.5.1":
-  version: 0.5.1
-  resolution: "@noble/ciphers@npm:0.5.1"
-  checksum: c1acc95c40e60ac52e352ab1550fe5ac2f3e5cbb225f30b30475c3715c772cb522538274c202952d0f7b02a49896b542691daab37c6e68e003de9dad2a1460b1
+"@noble/ciphers@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@noble/ciphers@npm:1.1.0"
+  checksum: 18313ccdeb8337d8739e3178cc9c1c30866453b9f398d0b195b7d4b336af8ebf334da2c2c7afa83f2bcd2c57243e2686354d41bb72090e586131f421518b5be1
   languageName: node
   linkType: hard
 
@@ -4939,7 +4939,7 @@ __metadata:
   dependencies:
     "@cloudflare/workers-types": "npm:^4.20240129.0"
     "@hono/zod-validator": "npm:^0.2.0"
-    "@noble/ciphers": "npm:^0.5.1"
+    "@noble/ciphers": "npm:^1.1.0"
     "@noble/curves": "npm:^1.3.0"
     "@noble/hashes": "npm:^1.3.3"
     "@scure/bip39": "npm:^1.2.2"
